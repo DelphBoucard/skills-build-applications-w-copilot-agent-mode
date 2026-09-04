@@ -8,11 +8,11 @@ import Workouts from './components/Workouts.jsx'
 import './App.css'
 
 const navigation = [
-  { label: 'Users', path: '/users', endpoint: '/api/users/', Component: Users },
-  { label: 'Activities', path: '/activities', endpoint: '/api/activities/', Component: Activities },
-  { label: 'Teams', path: '/teams', endpoint: '/api/teams/', Component: Teams },
-  { label: 'Leaderboard', path: '/leaderboard', endpoint: '/api/leaderboard/', Component: Leaderboard },
-  { label: 'Workouts', path: '/workouts', endpoint: '/api/workouts/', Component: Workouts },
+  { label: 'Users', path: '/users', Component: Users },
+  { label: 'Activities', path: '/activities', Component: Activities },
+  { label: 'Teams', path: '/teams', Component: Teams },
+  { label: 'Leaderboard', path: '/leaderboard', Component: Leaderboard },
+  { label: 'Workouts', path: '/workouts', Component: Workouts },
 ]
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
     <div className="app-shell">
       <header className="topbar"><div className="container d-flex align-items-center justify-content-between"><NavLink className="brand" to="/users"><img src={logo} alt="OctoFit" /><span>OctoFit</span></NavLink><span className="status-dot">Live tracker</span></div></header>
       <nav className="navigation" aria-label="Main navigation"><div className="container d-flex gap-1 overflow-auto">{navigation.map(({ label, path }) => <NavLink className="nav-link" key={path} to={path}>{label}</NavLink>)}</div></nav>
-      <main className="container content"><Routes>{navigation.map(({ path, endpoint, Component }) => <Route key={path} path={path} element={<Component endpoint={endpoint} />} />)}<Route path="*" element={<Navigate to="/users" replace />} /></Routes></main>
+      <main className="container content"><Routes>{navigation.map(({ path, Component }) => <Route key={path} path={path} element={<Component />} />)}<Route path="*" element={<Navigate to="/users" replace />} /></Routes></main>
     </div>
   )
 }
